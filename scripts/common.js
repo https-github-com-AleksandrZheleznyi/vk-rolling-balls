@@ -3,7 +3,33 @@ var IsMobilePlatform = false;
 let cachedConfigFile = null;
 let configUrl = 'https://spgames.s3.ap-south-1.amazonaws.com/rolling-balls/vkgames/0.1/RemoteConfig.json';
 var showedRewardVideo = false;
+var environment = {
+    appId: "",
+    payload: "",
+    screen: {
+        isFullscreen: false,
+        orientation: {
+            value: "",          // portrait, landscape
+            isLock: false
+        }
+    },
+    deviceInfo: {
+        isTv: false,
+        isTable: false,
+        isMobile: false,
+        deviceType: ""          // desktop, mobile, tablet, tv
+    },
+    browser: {
+        languageCode: "",       // ru, en, tr and more...
+        topLevelDomain: ""
+    }
+};
 
+// Localization
+var enabledDefaultLanguage = false;
+var defaultLanguageCode = "ru";
+
+// Config
 function LoadConfig(successCallback, errorCallback)
 {
     if(cachedConfigFile != null)
